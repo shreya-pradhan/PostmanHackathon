@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "88d84871-3a36-43d4-b63b-f7df1ef83cbf",
+		"name": "PostmanHackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "KeyWordSearch",
+			"item": [
+				{
+					"name": "GoogleSearch",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"searchUrls\", \"\");\r",
+									"pm.environment.set(\"searchCounter\", \"\");\r",
+									"var jsonData = pm.response.json();\r",
+									"var searchUrls = [];\r",
+									"\r",
+									"var allResults = jsonData.items;\r",
+									"var i = 0;\r",
+									"\r",
+									"for(i=0; i<allResults.length; i++)\r",
+									"{\r",
+									"    searchUrls.push(`${allResults[i].link}`)\r",
+									"}\r",
+									"\r",
+									"pm.environment.set(\"searchUrls\", searchUrls);\r",
+									"pm.environment.set(\"searchCounter\", searchUrls.length);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.googleapis.com/customsearch/v1?key={{searchKey}}&cx={{searchEngineId}}&q=Corona%20News&num=5",
+							"protocol": "https",
+							"host": [
+								"www",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"customsearch",
+								"v1"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{searchKey}}"
+								},
+								{
+									"key": "cx",
+									"value": "{{searchEngineId}}"
+								},
+								{
+									"key": "q",
+									"value": "Corona%20News"
+								},
+								{
+									"key": "num",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search text in google",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.googleapis.com/customsearch/v1?key={{searchKey}}&cx={{searchEngineId}}&q=Corona%20News&num=5",
+									"protocol": "https",
+									"host": [
+										"www",
+										"googleapis",
+										"com"
+									],
+									"path": [
+										"customsearch",
+										"v1"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{searchKey}}"
+										},
+										{
+											"key": "cx",
+											"value": "{{searchEngineId}}"
+										},
+										{
+											"key": "q",
+											"value": "Corona%20News"
+										},
+										{
+											"key": "num",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "X-Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Referer"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 25 Jan 2021 13:05:36 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "ESF"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "private"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Alt-Svc",
+									"value": "h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"kind\": \"customsearch#search\",\n    \"url\": {\n        \"type\": \"application/json\",\n        \"template\": \"https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json\"\n    },\n    \"queries\": {\n        \"request\": [\n            {\n                \"title\": \"Google Custom Search - Corona News\",\n                \"totalResults\": \"285000000\",\n                \"searchTerms\": \"Corona News\",\n                \"count\": 5,\n                \"startIndex\": 1,\n                \"inputEncoding\": \"utf8\",\n                \"outputEncoding\": \"utf8\",\n                \"safe\": \"off\",\n                \"cx\": \"fd95d5a799d5abbee\"\n            }\n        ],\n        \"nextPage\": [\n            {\n                \"title\": \"Google Custom Search - Corona News\",\n                \"totalResults\": \"285000000\",\n                \"searchTerms\": \"Corona News\",\n                \"count\": 5,\n                \"startIndex\": 6,\n                \"inputEncoding\": \"utf8\",\n                \"outputEncoding\": \"utf8\",\n                \"safe\": \"off\",\n                \"cx\": \"fd95d5a799d5abbee\"\n            }\n        ]\n    },\n    \"context\": {\n        \"title\": \"Google\"\n    },\n    \"searchInformation\": {\n        \"searchTime\": 0.685934,\n        \"formattedSearchTime\": \"0.69\",\n        \"totalResults\": \"285000000\",\n        \"formattedTotalResults\": \"285,000,000\"\n    },\n    \"items\": [\n        {\n            \"kind\": \"customsearch#result\",\n            \"title\": \"Coronavirus (COVID-19) Update: January 22, 2021 | FDA\",\n            \"htmlTitle\": \"Coronavirus (COVID-19) Update: January 22, 2021 | FDA\",\n            \"link\": \"https://news.google.com/articles/CBMiX2h0dHBzOi8vd3d3LmZkYS5nb3YvbmV3cy1ldmVudHMvcHJlc3MtYW5ub3VuY2VtZW50cy9jb3JvbmF2aXJ1cy1jb3ZpZC0xOS11cGRhdGUtamFudWFyeS0yMi0yMDIx0gEA?hl=en-AU&gl=AU&ceid=AU%3Aen\",\n            \"displayLink\": \"news.google.com\",\n            \"snippet\": \"2 days ago ... ... FDA Newsroom · Press Announcements; Coronavirus (COVID-19) Update: \\nJanuary 22, 2021. Press Announcements. FDA News Release ...\",\n            \"htmlSnippet\": \"2 days ago <b>...</b> ... FDA Newsroom &middot; Press Announcements; Coronavirus (COVID-19) Update: <br>\\nJanuary 22, 2021. Press Announcements. FDA <b>News</b> Release&nbsp;...\",\n            \"cacheId\": \"t6cbL7uH6sIJ\",\n            \"formattedUrl\": \"https://news.google.com/.../ CBMiX2h0dHBzOi8vd3d3LmZkYS5nb3YvbmV3cy1ldmVudHMvcHJlc3...\",\n            \"htmlFormattedUrl\": \"https://<b>news</b>.google.com/.../ CBMiX2h0dHBzOi8vd3d3LmZkYS5nb3YvbmV3cy1ldmVudHMvcHJlc3...\",\n            \"pagemap\": {\n                \"cse_thumbnail\": [\n                    {\n                        \"src\": \"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRh1ljcaqtoUkZR5mTuEQYYy9JIlM9iOZUNpkhIMKtY3QRI6qmeBq_Lp1k\",\n                        \"width\": \"300\",\n                        \"height\": \"168\"\n                    }\n                ],\n                \"metatags\": [\n                    {\n                        \"og:image\": \"https://www.fda.gov/themes/custom/preview/img/FDA-Social-Graphic.png\",\n                        \"twitter:card\": \"summary_large_image\",\n                        \"article:published_time\": \"Fri, 01/22/2021 - 15:42\",\n                        \"og:site_name\": \"U.S. Food and Drug Administration\",\n                        \"dcterms.title\": \"Coronavirus (COVID-19) Update: January 22, 2021\",\n                        \"twitter:creator\": \"@US_FDA\",\n                        \"og:description\": \"Coronavirus Update\",\n                        \"article:publisher\": \"FDA\",\n                        \"twitter:image\": \"https://www.fda.gov/themes/custom/preview/img/FDA-Social-Graphic.png\",\n                        \"twitter:site\": \"@US_FDA\",\n                        \"dcterms.source\": \"FDA\",\n                        \"article:modified_time\": \"Fri, 01/22/2021 - 15:00\",\n                        \"dcterms.publisher\": \"FDA\",\n                        \"twitter:title\": \"Coronavirus (COVID-19) Update: January 22, 2021\",\n                        \"og:type\": \"Article\",\n                        \"dcterms.contributor\": \"Office of the Commissioner\",\n                        \"handheldfriendly\": \"true\",\n                        \"og:title\": \"Coronavirus (COVID-19) Update: January 22, 2021\",\n                        \"dcterms.creator\": \"Office of the Commissioner\",\n                        \"dcterms.description\": \"Coronavirus (COVID-19) Update\",\n                        \"og:updated_time\": \"Fri, 01/22/2021 - 15:00\",\n                        \"dcterms.issued\": \"Fri, 01/22/2021 - 15:00\",\n                        \"viewport\": \"width=device-width, initial-scale=1.0\",\n                        \"twitter:description\": \"Coronavirus Update\",\n                        \"mobileoptimized\": \"width\",\n                        \"dcterms.audience\": \"Media\",\n                        \"og:url\": \"https://www.fda.gov/news-events/press-announcements/coronavirus-covid-19-update-january-22-2021\"\n                    }\n                ],\n                \"cse_image\": [\n                    {\n                        \"src\": \"https://www.fda.gov/themes/custom/preview/img/FDA-Social-Graphic.png\"\n                    }\n                ]\n            }\n        },\n        {\n            \"kind\": \"customsearch#result\",\n            \"title\": \"South Africa coronavirus variant: What is the risk? - BBC News\",\n            \"htmlTitle\": \"South Africa coronavirus variant: What is the risk? - BBC <b>News</b>\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMiKGh0dHBzOi8vd3d3LmJiYy5jb20vbmV3cy9oZWFsdGgtNTU1MzQ3MjfSASxodHRwczovL3d3dy5iYmMuY29tL25ld3MvYW1wL2hlYWx0aC01NTUzNDcyNw?oc=5\",\n            \"displayLink\": \"news.google.com\",\n            \"snippet\": \"Jan 4, 2021 ... South Africa coronavirus variant: What is the risk? By Michelle Roberts Health \\neditor, BBC News online. Published: 8 January. Share. close. Share page.\",\n            \"htmlSnippet\": \"Jan 4, 2021 <b>...</b> South Africa coronavirus variant: What is the risk? By Michelle Roberts Health <br>\\neditor, BBC <b>News</b> online. Published: 8 January. Share. close. Share page.\",\n            \"cacheId\": \"crsOGqSXTCIJ\",\n            \"formattedUrl\": \"https://news.google.com/__.../ CBMiKGh0dHBzOi8vd3d3LmJiYy5jb20vbmV3cy9oZWFsdGgtNTU1Mz...\",\n            \"htmlFormattedUrl\": \"https://<b>news</b>.google.com/__.../ CBMiKGh0dHBzOi8vd3d3LmJiYy5jb20vbmV3cy9oZWFsdGgtNTU1Mz...\",\n            \"pagemap\": {\n                \"cse_thumbnail\": [\n                    {\n                        \"src\": \"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRFjlwZ6PrhobWySffRWxAk6WOtWgElFYC-1XGT2GZXo3LoZsLPJ52SZQA\",\n                        \"width\": \"300\",\n                        \"height\": \"168\"\n                    }\n                ],\n                \"metatags\": [\n                    {\n                        \"og:image\": \"https://ichef.bbci.co.uk/news/1024/branded_news/166C8/production/_116084819_smallergettyimages-1204224469-1.jpg\",\n                        \"theme-color\": \"#FFFFFF\",\n                        \"twitter:card\": \"summary_large_image\",\n                        \"og:site_name\": \"BBC News\",\n                        \"cleartype\": \"on\",\n                        \"msapplication-tileimage\": \"BBC News\",\n                        \"og:description\": \"Why experts are concerned about the emergence of this particular new version of coronavirus.\",\n                        \"twitter:creator\": \"@BBCWorld\",\n                        \"twitter:image:alt\": \"Coronavirus up close\",\n                        \"twitter:site\": \"@BBCWorld\",\n                        \"fb:admins\": \"100004154058350\",\n                        \"application-name\": \"BBC News\",\n                        \"msapplication-tilecolor\": \"#bb1919\",\n                        \"article:section\": \"Health\",\n                        \"og:image:alt\": \"Coronavirus up close\",\n                        \"og:type\": \"article\",\n                        \"twitter:title\": \"South Africa coronavirus variant: What is the risk?\",\n                        \"twitter:domain\": \"www.bbc.com\",\n                        \"og:title\": \"South Africa coronavirus variant: What is the risk?\",\n                        \"fb:pages\": \"1143803202301544,317278538359186,1392506827668140,742734325867560,185246968166196,156060587793370,137920769558355,193435954068976,21263239760,156400551056385,929399697073756,154344434967,228735667216,80758950658,260212261199,294662213128,1086451581439054,283348121682053,295830058648,239931389545417,304314573046,310719525611571,647687225371774,1159932557403143,286567251709437,1731770190373618,125309456546,163571453661989,285361880228,512423982152360,238003846549831,176663550714,260967092113,118450564909230,100978706649892,15286229625,122103087870579,120655094632228,102814153147070,124715648647,153132638110668,150467675018739\",\n                        \"article:author\": \"https://www.facebook.com/bbcnews\",\n                        \"twitter:image:src\": \"https://ichef.bbci.co.uk/news/1024/branded_news/166C8/production/_116084819_smallergettyimages-1204224469-1.jpg\",\n                        \"fb:app_id\": \"1609039196070050\",\n                        \"viewport\": \"width=device-width, initial-scale=1\",\n                        \"twitter:description\": \"Why experts are concerned about the emergence of this particular new version of coronavirus.\",\n                        \"og:locale\": \"en_GB\",\n                        \"mobile-web-app-capable\": \"yes\",\n                        \"og:url\": \"https://www.bbc.com/news/health-55534727\"\n                    }\n                ],\n                \"cse_image\": [\n                    {\n                        \"src\": \"https://ichef.bbci.co.uk/news/1024/branded_news/166C8/production/_116084819_smallergettyimages-1204224469-1.jpg\"\n                    }\n                ]\n            }\n        },\n        {\n            \"kind\": \"customsearch#result\",\n            \"title\": \"Why are new coronavirus variants emerging in the U.S.?\",\n            \"htmlTitle\": \"Why are new coronavirus variants emerging in the U.S.?\",\n            \"link\": \"https://news.google.com/articles/CAIiEMqD8Db4KSwxIx0YSe_9M6gqGQgEKhAIACoHCAowvIaCCzDnxf4CMN2F8gU?hl=en-US&gl=US&ceid=US%3Aen\",\n            \"displayLink\": \"news.google.com\",\n            \"snippet\": \"Jan 17, 2021 ... 1.351 in South Africa.” Download the NBC News app for full coverage of the \\ncoronavirus outbreak. However, the statement noted “there is a ...\",\n            \"htmlSnippet\": \"Jan 17, 2021 <b>...</b> 1.351 in South Africa.” Download the NBC <b>News</b> app for full coverage of the <br>\\ncoronavirus outbreak. However, the statement noted “there is a&nbsp;...\",\n            \"cacheId\": \"Frf5Q_ams6IJ\",\n            \"formattedUrl\": \"https://news.google.com/.../CAIiEMqD8Db4KSwxIx0YSe_ 9M6gqGQgEKhAIACoHCAowvIaCCzDnxf4CMN2F8gU?...\",\n            \"htmlFormattedUrl\": \"https://<b>news</b>.google.com/.../CAIiEMqD8Db4KSwxIx0YSe_ 9M6gqGQgEKhAIACoHCAowvIaCCzDnxf4CMN2F8gU?...\",\n            \"pagemap\": {\n                \"cse_thumbnail\": [\n                    {\n                        \"src\": \"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRpQnFMx-Tk9jHU04x7lsGHw8dq7sSWlmSfemAYZBADgDZPwgDf_nTZC14\",\n                        \"width\": \"310\",\n                        \"height\": \"163\"\n                    }\n                ],\n                \"metatags\": [\n                    {\n                        \"msapplication-config\": \"https://nodeassets.nbcnews.com/cdnassets/projects/ramen/favicon/nbcnews/all-other-sizes-PNG.ico/browserconfig.xml\",\n                        \"og:image\": \"https://media1.s-nbcnews.com/j/newscms/2021_02/3442455/210115-covid-genome-sequencing-al-1449_1374c2628ab508b3ba54277550533020.nbcnews-fp-1200-630.jpg\",\n                        \"og:image:width\": \"1200\",\n                        \"twitter:card\": \"summary_large_image\",\n                        \"og:site_name\": \"NBC News\",\n                        \"og:image:type\": \"image/jpeg\",\n                        \"msapplication-tileimage\": \"https://nodeassets.nbcnews.com/cdnassets/projects/ramen/favicon/nbcnews/all-other-sizes-PNG.ico/ms-icon-144x144.png\",\n                        \"twitter:creator\": \"NBCNews\",\n                        \"og:description\": \"This week, two new variants were detected in Ohio.\",\n                        \"og:image:secure_url\": \"https://media1.s-nbcnews.com/j/newscms/2021_02/3442455/210115-covid-genome-sequencing-al-1449_1374c2628ab508b3ba54277550533020.nbcnews-fp-1200-630.jpg\",\n                        \"twitter:image\": \"https://media1.s-nbcnews.com/j/newscms/2021_02/3442455/210115-covid-genome-sequencing-al-1449_1374c2628ab508b3ba54277550533020.nbcnews-fp-1024-512.jpg\",\n                        \"twitter:site\": \"@NBCNews\",\n                        \"article:content_tier\": \"free\",\n                        \"article:published\": \"Sun Jan 17 2021 11:00:00 GMT+0000 (UTC)\",\n                        \"msapplication-tilecolor\": \"#FFFFFF\",\n                        \"og:type\": \"article\",\n                        \"twitter:title\": \"Why are new coronavirus variants emerging in the U.S.?\",\n                        \"og:title\": \"Why are new coronavirus variants emerging in the U.S.?\",\n                        \"og:image:height\": \"630\",\n                        \"fb:pages\": \"155869377766434\",\n                        \"twitter:image:src\": \"https://media1.s-nbcnews.com/j/newscms/2021_02/3442455/210115-covid-genome-sequencing-al-1449_1374c2628ab508b3ba54277550533020.nbcnews-fp-1024-512.jpg\",\n                        \"fb:app_id\": \"10150138890205613\",\n                        \"viewport\": \"width=device-width, initial-scale=1, user-scalable=yes\",\n                        \"twitter:description\": \"This week, two new variants were detected in Ohio.\",\n                        \"og:locale\": \"en_US\",\n                        \"og:url\": \"https://www.nbcnews.com/news/us-news/why-are-new-coronavirus-variants-emerging-u-s-n1254454\",\n                        \"article:modified\": \"Sun Jan 17 2021 20:05:05 GMT+0000 (UTC)\",\n                        \"article:opinion\": \"false\"\n                    }\n                ],\n                \"cse_image\": [\n                    {\n                        \"src\": \"https://media1.s-nbcnews.com/j/newscms/2021_02/3442455/210115-covid-genome-sequencing-al-1449_1374c2628ab508b3ba54277550533020.nbcnews-fp-1200-630.jpg\"\n                    }\n                ]\n            }\n        },\n        {\n            \"kind\": \"customsearch#result\",\n            \"title\": \"Coronavirus News: What We Know About the Latest Mutation in the ...\",\n            \"htmlTitle\": \"Coronavirus <b>News</b>: What We Know About the Latest Mutation in the ...\",\n            \"link\": \"https://news.google.com/__i/rss/rd/articles/CBMilgFodHRwczovL3d3dy53YXNoaW5ndG9ucG9zdC5jb20vYnVzaW5lc3Mvd2h5LXRoZW11dGF0ZWQtY29yb25hdmlydXMtdmFyaWFudHMtYXJlLXNvd29ycmlzb21lLzIwMjEvMDEvMjEvMmI1ZjdhYmUtNWJiMi0xMWViLWE4NDktNmY5NDIzYTc1ZmZkX3N0b3J5Lmh0bWzSAQA?oc=5\",\n            \"displayLink\": \"news.google.com\",\n            \"snippet\": \"Dec 20, 2020 ... Viruses mutate all the time. How worrisome are new coronavirus variants? \\nBloomberg News's Jason Gale explains.\",\n            \"htmlSnippet\": \"Dec 20, 2020 <b>...</b> Viruses mutate all the time. How worrisome are new coronavirus variants? <br>\\nBloomberg <b>News&#39;s</b> Jason Gale explains.\",\n            \"cacheId\": \"UKlHbiJ4UMoJ\",\n            \"formattedUrl\": \"https://news.google.com/__.../ CBMilgFodHRwczovL3d3dy53YXNoaW5ndG9ucG9zdC5jb20vYnVzaW5...\",\n            \"htmlFormattedUrl\": \"https://<b>news</b>.google.com/__.../ CBMilgFodHRwczovL3d3dy53YXNoaW5ndG9ucG9zdC5jb20vYnVzaW5...\",\n            \"pagemap\": {\n                \"cse_thumbnail\": [\n                    {\n                        \"src\": \"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTLLdbm7R_1mlC8P_FG19WlNXhLs_Mj9CkjGDgYNKe6dWFGdmj8bcEoRR0Z\",\n                        \"width\": \"275\",\n                        \"height\": \"183\"\n                    }\n                ],\n                \"metatags\": [\n                    {\n                        \"og:image\": \"https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ilGYTOsvMpXg/v1/1200x800.jpg\",\n                        \"twitter:card\": \"summary_large_image\",\n                        \"og:site_name\": \"Bloomberg.com\",\n                        \"sailthru.tags\": \"Coronavirus,South Africa,Brazil,Europe,Japan,South Korea,Government,PUBLIC HEALTH ENGLAND,UNIVERSITY OF OXFORD,California,business,quicktake\",\n                        \"al:android:package\": \"com.bloomberg.android.plus\",\n                        \"parsely-author\": \"Jason Gale\",\n                        \"og:description\": \"Viruses mutate all the time, including the novel coronavirus that’s caused the global Covid-19 pandemic. Most of the changes have no apparent effect. But recent variants that have emerged in the U.K., South Africa and Brazil are causing particular concern. Studies suggest they are more contagious, and some evidence points to the U.K. strain being more deadly. An increase in infections has led to a surge in hospitalizations and deaths in England and elsewhere. Drugmakers say their vaccines should\",\n                        \"twitter:image\": \"https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ilGYTOsvMpXg/v1/1200x800.jpg\",\n                        \"parsely-type\": \"post\",\n                        \"twitter:site\": \"@business\",\n                        \"parsely-link\": \"https://www.bloomberg.com/news/articles/2020-12-21/why-the-u-k-s-mutated-coronavirus-is-fanning-worries-quicktake\",\n                        \"iso-8601-publish-date\": \"2020-12-21T04:04:16.208Z\",\n                        \"sailthru.title\": \"Why the Mutated Coronavirus Variants Are So Worrisome\",\n                        \"checksum\": \"11d38eee6a80806d6287cdcfbb749d9e\",\n                        \"parsely-image-url\": \"https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ilGYTOsvMpXg/v1/1200x800.jpg\",\n                        \"parsely-section\": \"business\",\n                        \"article:content_tier\": \"metered\",\n                        \"fb:status\": \"Viruses mutate all the time, including the novel coronavirus that’s caused the global Covid-19 pandemic. Most of the changes have no apparent effect. But recent variants that have emerged in the U.K., South Africa and Brazil are causing particular concern. Studies suggest they are more contagious, and some evidence points to the U.K. strain being more deadly. An increase in infections has led to a surge in hospitalizations and deaths in England and elsewhere. Drugmakers say their vaccines should\",\n                        \"sailthru.date\": \"2020-12-21T04:04:16.208Z\",\n                        \"og:type\": \"article\",\n                        \"twitter:title\": \"Why the Mutated Coronavirus Variants Are So Worrisome\",\n                        \"parsely-post-id\": \"QLNXZHDWX2TS01\",\n                        \"og:title\": \"Why the Mutated Coronavirus Variants Are So Worrisome\",\n                        \"parsely-title\": \"Coronavirus News: What We Know About the Latest Mutation in the U.K.\",\n                        \"parsely-pub-date\": \"2020-12-21T04:04:16.208Z\",\n                        \"al:android:url\": \"bloomberg://www.bloomberg.com/news/articles/2020-12-21/why-the-u-k-s-mutated-coronavirus-is-fanning-worries-quicktake?utm_medium=applink&utm_source=facebook\",\n                        \"referrer\": \"unsafe-url\",\n                        \"parsely-tags\": \"Coronavirus,South Africa,Brazil,Europe,Japan,South Korea,Government,PUBLIC HEALTH ENGLAND,UNIVERSITY OF OXFORD,California,Secondary Brand: business,Franchise: quicktake,Region: Global,Page: article\",\n                        \"sailthru.description\": \"Viruses mutate all the time, including the novel coronavirus that’s caused the global Covid-19 pandemic. Most of the changes have no apparent effect. But recent variants that have emerged in the U.K., South Africa and Brazil are causing particular concern. Studies suggest they are more contagious, and some evidence points to the U.K. strain being more deadly. An increase in infections has led to a surge in hospitalizations and deaths in England and elsewhere. Drugmakers say their vaccines should\",\n                        \"apple-mobile-web-app-status-bar-style\": \"black\",\n                        \"viewport\": \"width=device-width, initial-scale=1, viewport-fit=cover\",\n                        \"twitter:description\": \"Viruses mutate all the time, including the novel coronavirus that’s caused the global Covid-19 pandemic. Most of the changes have no apparent effect. But recent variants that have emerged in the U.K., South Africa and Brazil are causing particular concern. Studies suggest they are more contagious, and some evidence points to the U.K. strain being more deadly. An increase in infections has led to a surge in hospitalizations and deaths in England and elsewhere. Drugmakers say their vaccines should\",\n                        \"apple-mobile-web-app-capable\": \"no\",\n                        \"og:url\": \"https://www.bloomberg.com/news/articles/2020-12-21/why-the-u-k-s-mutated-coronavirus-is-fanning-worries-quicktake\",\n                        \"validatedat\": \"2021-01-24T23:35:59.171Z\",\n                        \"al:android:app_name\": \"Bloomberg\",\n                        \"sailthru.author\": \"Jason Gale\",\n                        \"article:opinion\": \"false\"\n                    }\n                ],\n                \"cse_image\": [\n                    {\n                        \"src\": \"https://assets.bwbx.io/images/users/iqjWHBFdfxIU/ilGYTOsvMpXg/v1/1200x800.jpg\"\n                    }\n                ]\n            }\n        },\n        {\n            \"kind\": \"customsearch#result\",\n            \"title\": \"Covid-19 news: 'Too early to say' when England lockdown will be ...\",\n            \"htmlTitle\": \"Covid-19 <b>news</b>: &#39;Too early to say&#39; when England lockdown will be ...\",\n            \"link\": \"http://feedproxy.google.com/~r/ChemNews/~3/_Rii9218u4M/\",\n            \"displayLink\": \"feedproxy.google.com\",\n            \"snippet\": \"Latest coronavirus news as of 5pm on 21 January. Too soon to say when \\nrestrictions in England could be lifted, says UK prime minister. It is still “too early \\nto say” ...\",\n            \"htmlSnippet\": \"Latest coronavirus <b>news</b> as of 5pm on 21 January. Too soon to say when <br>\\nrestrictions in England could be lifted, says UK prime minister. It is still “too early <br>\\nto say”&nbsp;...\",\n            \"cacheId\": \"Z0j3mnX25oAJ\",\n            \"formattedUrl\": \"feedproxy.google.com/~r/ChemNews/~3/_Rii9218u4M/\",\n            \"htmlFormattedUrl\": \"feedproxy.google.com/~r/Chem<b>News</b>/~3/_Rii9218u4M/\",\n            \"pagemap\": {\n                \"thumbnail\": [\n                    {\n                        \"src\": \"https://images.newscientist.com/wp-content/uploads/2021/01/21174945/21-jan_daily.jpg\"\n                    }\n                ],\n                \"metatags\": [\n                    {\n                        \"p:domain_verify\": \"c64e8f4ac4f50bca3404abba4882a79d\",\n                        \"og:image\": \"https://images.newscientist.com/wp-content/uploads/2021/01/21174945/21-jan_daily.jpg\",\n                        \"thumbnail\": \"https://images.newscientist.com/wp-content/uploads/2021/01/21174945/21-jan_daily.jpg\",\n                        \"og:type\": \"article\",\n                        \"twitter:card\": \"summary\",\n                        \"twitter:title\": \"Covid-19 news: ‘Too early to say’ when England lockdown will be lifted | New Scientist\",\n                        \"og:site_name\": \"New Scientist\",\n                        \"author\": \"Michael Le Page, Clare Wilson, Jessica Hamzelou, Sam Wong, Graham Lawton, Adam Vaughan, Conrad Quilty-Harper and Layal Liverpool\",\n                        \"og:title\": \"Covid-19 news: ‘Too early to say’ when England lockdown will be lifted\",\n                        \"og:description\": \"The latest coronavirus news updated every day including coronavirus cases, the latest news, features and interviews from New Scientist and essential information about the covid-19 pandemic\",\n                        \"twitter:creator\": \"@newscientist\",\n                        \"twitter:image\": \"https://images.newscientist.com/wp-content/uploads/2021/01/21174945/21-jan_daily.jpg\",\n                        \"twitter:site\": \"@newscientist\",\n                        \"viewport\": \"width=device-width, initial-scale=1.0, maximum-scale=1.5\",\n                        \"news_keywords\": \"covid,coronavirus,covid news,coronavirus news,covid news uk,coronavirus news uk,pandemic,virus,coronavirus latest,coronavirus uk\",\n                        \"twitter:description\": \"The latest coronavirus news updated every day including coronavirus cases, the latest news, features and interviews from New Scientist and essential information about the covid-19 pandemic\",\n                        \"onesignal\": \"wordpress-plugin\",\n                        \"og:locale\": \"en_US\",\n                        \"og:url\": \"https://www.newscientist.com/article/2237475-covid-19-news-too-early-to-say-when-england-lockdown-will-be-lifted/\",\n                        \"ob_page_type\": \"non-paywall\"\n                    }\n                ],\n                \"cse_image\": [\n                    {\n                        \"src\": \"https://images.newscientist.com/wp-content/uploads/2021/01/21174945/21-jan_daily.jpg\",\n                        \"width\": \"275\",\n                        \"type\": \"1\",\n                        \"height\": \"183\"\n                    }\n                ]\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "SearchSummary",
+			"item": [
+				{
+					"name": "RetrieveSummaries",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var searchUrls = pm.variables.get(\"searchUrls\");\r",
+									"var currentIteration = parseInt(pm.environment.get('searchCounter'))\r",
+									"console.log(`Current Iteration : ${currentIteration}`)\r",
+									"pm.environment.set('webLink', searchUrls[currentIteration-1])\r",
+									"if(currentIteration > 0)\r",
+									"{   \r",
+									"    currentIteration--\r",
+									"    pm.environment.set('searchCounter', currentIteration)\r",
+									"    postman.setNextRequest(\"RetrieveSummaries\");\r",
+									"}\r",
+									"else{\r",
+									"    pm.environment.set(\"currentSearchIteration\", searchUrls.length);\r",
+									"    postman.setNextRequest(\"PostToSlack\")\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"var summaryResults = pm.variables.get(\"result\");\r",
+									"\r",
+									"if(summaryResults===\"\"){\r",
+									"    pm.environment.set('result', jsonData.sm_api_content)\r",
+									"}\r",
+									"else\r",
+									"{\r",
+									"summaryResults = summaryResults +';'+jsonData.sm_api_content;\r",
+									"pm.environment.set(\"result\", summaryResults);\r",
+									"}\r",
+									"console.log(summaryResults);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.smmry.com.?SM_API_KEY={{summaryKey}}&SM_URL={{webLink}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"smmry",
+								"com",
+								""
+							],
+							"query": [
+								{
+									"key": "SM_API_KEY",
+									"value": "{{summaryKey}}"
+								},
+								{
+									"key": "SM_URL",
+									"value": "{{webLink}}"
+								}
+							]
+						},
+						"description": "retrieve summaries of the result"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Slack",
+			"item": [
+				{
+					"name": "PostToSlack",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var results = pm.variables.get(\"result\");\r",
+									"var currentSearchIteration = parseInt(pm.environment.get('currentSearchIteration'));\r",
+									"console.log(`Current Search Iteration : ${currentSearchIteration}`);\r",
+									"var resultsArray = results.split(';');\r",
+									"pm.environment.set('Summary_Text', resultsArray[currentSearchIteration-1]);\r",
+									"if(currentSearchIteration > 0)\r",
+									"{   \r",
+									"    currentSearchIteration--;\r",
+									"    pm.environment.set('currentSearchIteration', currentSearchIteration);\r",
+									"    postman.setNextRequest(\"PostToSlack\");\r",
+									"}\r",
+									"else\r",
+									"    pm.environment.set('result', \"\");\r",
+									"    postman.setNextRequest(null);\r",
+									"    \r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var currentSearchIteration = pm.environment.get('currentSearchIteration');\r",
+									"\r",
+									"if(currentSearchIteration > 0)\r",
+									"    postman.setNextRequest(\"PostToSlack\")"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"blocks\": [\r\n        {\r\n            \"type\": \"context\",\r\n            \"elements\": [\r\n                {\r\n                    \"type\": \"image\",\r\n                    \"image_url\": \"https://api.slack.com/img/blocks/bkb_template_images/tripAgentLocationMarker.png\",\r\n                    \"alt_text\": \"Location Pin Icon\"\r\n                },\r\n                {\r\n                    \"type\": \"plain_text\",\r\n                    \"emoji\": true,\r\n                    \"text\": \"{{Summary_Text}}\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"type\": \"divider\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Slack_Web_Hook}}",
+							"host": [
+								"{{Slack_Web_Hook}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
